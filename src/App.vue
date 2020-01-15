@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <pomodoro></pomodoro>
     <cat-a-p-i></cat-a-p-i>
   </div>
