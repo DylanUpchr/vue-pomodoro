@@ -2,7 +2,7 @@
   <div>
     <PomodoroTitle></PomodoroTitle>
     <PomodoroTomato></PomodoroTomato>
-    <PomodoroButton></PomodoroButton>
+    <PomodoroButton v-on:play="ReEmitPlay" v-on:pause="ReEmitPause" v-on:stop="ReEmitStop"></PomodoroButton>
     <PomodoroTimer></PomodoroTimer>
   </div>
   
@@ -21,6 +21,17 @@ export default {
     PomodoroTomato,
     PomodoroButton,
     PomodoroTimer,
+  },
+  methods: {
+    ReEmitPlay() {
+      this.$emit("play");
+    },
+    ReEmitPause() {
+      this.$emit("pause");
+    },
+    ReEmitStop() {
+      this.$emit("stop");
+    },
   }
 }
 </script>

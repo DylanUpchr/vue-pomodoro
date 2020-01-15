@@ -17,16 +17,19 @@ export default {
                     this.$refs[item].disabled = true;
                     this.$refs["pauseButton"].disabled = false;
                     this.$refs["stopButton"].disabled = false;
+                    this.$emit("play");
                     break;
                 case "pauseButton":
                     this.$refs["playButton"].disabled = false;
                     this.$refs[item].disabled = true;
                     this.$refs["stopButton"].disabled = false;
+                    this.$emit("pause");
                     break;
                 case "stopButton":
                     this.$refs["playButton"].disabled = false;
                     this.$refs["pauseButton"].disabled = false;
                     this.$refs[item].disabled = true;
+                    this.$emit("stop");
                     break;
             }
         }
