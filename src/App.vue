@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <pomodoro></pomodoro>
+    <cat-a-p-i></cat-a-p-i>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Pomodoro from './components/Pomodoro.vue'
+import CatAPI from './components/CatAPI.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Pomodoro,
+    CatAPI
   }
 }
 </script>
