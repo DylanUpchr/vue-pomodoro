@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img :src="this.Img.url">
+      <img :src="this.Img.url" >
   </div>
 </template>
 
@@ -29,8 +29,6 @@ export default {
         })
     }
 }
-
-
 </script>
 
 <style>
