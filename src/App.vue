@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <pomodoro></pomodoro>
-    <cat-a-p-i></cat-a-p-i>
+    <pomodoro class="component"></pomodoro>
+    <cat-a-p-i class="component"></cat-a-p-i>
   </div>
 </template>
 
@@ -26,5 +26,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
+  margin: auto;
+  max-height: 100vh;
+  width: 75%;
+  padding: 0px;
 }
 </style>
