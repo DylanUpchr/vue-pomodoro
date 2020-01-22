@@ -1,7 +1,7 @@
 <template>
   <div>
       <label ref="clock"></label><br/>
-      <label>{{ this.Active ? "WORK!" : "REST!" }}</label>
+      <label>{{ this.WorkingState ? "WORK!" : "REST!" }}</label>
   </div>
 </template>
 
@@ -10,16 +10,34 @@ export default {
     name: 'PomodoroTimer',
     data(){
       return {
+        WorkingState: false,
         Active: this.timerState,
         Time: 1200,
         Minutes: 0,
-        Seconds: 20
+        Seconds: -1
       }
     },
     methods: {
+      'play': function(){
+          this.Active = true
+          if(this.Seconds == -1){
+            this.work()
+          }
+      },
+      'pause': function(){
+          this.Active = false
+      },
+      'work': function() {
+              this.Seconds = 20
+        this.WorkingState = true
+      },
+      'rest': function(){
+              this.Seconds = 10
+        this.WorkingState = false
+      },
       'reset': function(){
         this.Minutes = 0
-        this.Seconds = 20
+        this.Seconds = 25
         this.$emit('reset')
       },
       'tick': function(){
@@ -31,7 +49,11 @@ export default {
             this.Seconds--
           }
           if (this.Minutes == 0 && this.Seconds == 0){
-            this.reset()
+            if(this.WorkingState){
+              this.rest()
+            }else{
+              this.work()
+            }
           }
           this.$refs.clock.innerHTML = this.Minutes + ":" + (this.Seconds > 9 ? this.Seconds : "0" + this.Seconds)
         }
@@ -41,8 +63,8 @@ export default {
       timerState: Boolean,
     },
     created(){
-      this.$parent.$on('play', f => {this.Active = true})
-      this.$parent.$on('pause', f => {this.Active = false})
+      this.$parent.$on('play', this.play)
+      this.$parent.$on('pause', this.pause)
       this.$parent.$on('stop', this.reset)
       this.timer = setInterval(this.tick, 1000)
     }

@@ -32,7 +32,15 @@ export default {
                     this.$emit("stop");
                     break;
             }
+        },
+        Reset() {
+            this.$refs["playButton"].disabled = true;
+            this.$refs["pauseButton"].disabled = false;
+            this.$refs["stopButton"].disabled = false;
         }
+    },
+    created(){
+      this.$parent.$on('reset', this.Reset);
     }
 }
 </script>

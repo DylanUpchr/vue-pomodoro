@@ -36,6 +36,6 @@ export default {
 .auto-resize{
     width: auto;
     height: 100%;
-    max-height: 50vh;
+    max-height: 40vh;
 }
 </style>
