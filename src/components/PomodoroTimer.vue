@@ -17,11 +17,7 @@ export default {
       }
     },
     methods: {
-      'changeState': function(){
-        this.Active = !this.Active
-      },
       'reset': function(){
-        this.changeState()
         this.Minutes = 0
         this.Seconds = 20
         this.$emit('reset')
@@ -45,8 +41,8 @@ export default {
       timerState: Boolean,
     },
     created(){
-      this.$parent.$on('play', this.changeState)
-      this.$parent.$on('pause', this.changeState)
+      this.$parent.$on('play', f => {this.Active = true})
+      this.$parent.$on('pause', f => {this.Active = false})
       this.$parent.$on('stop', this.reset)
       this.timer = setInterval(this.tick, 1000)
     }
