@@ -24,6 +24,7 @@ export default {
         this.changeState()
         this.Minutes = 0
         this.Seconds = 20
+        this.$emit('reset')
       },
       'tick': function(){
         if(this.Active){
@@ -36,12 +37,12 @@ export default {
           if (this.Minutes == 0 && this.Seconds == 0){
             this.reset()
           }
-          this.$refs.clock.innerHTML = this.Minutes + ":" + this.Seconds
+          this.$refs.clock.innerHTML = this.Minutes + ":" + (this.Seconds > 9 ? this.Seconds : "0" + this.Seconds)
         }
       }
     },
     props: {
-      timerState: Boolean
+      timerState: Boolean,
     },
     created(){
       this.$parent.$on('play', this.changeState)
