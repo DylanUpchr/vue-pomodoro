@@ -3,7 +3,7 @@
     <PomodoroTitle></PomodoroTitle>
     <PomodoroTomato></PomodoroTomato>
     <PomodoroButton v-on:play="ReEmitPlay" v-on:pause="ReEmitPause" v-on:stop="ReEmitStop"></PomodoroButton>
-    <PomodoroTimer></PomodoroTimer>
+    <PomodoroTimer :timerState="this.TimerState"></PomodoroTimer>
   </div>
   
 </template>
@@ -32,6 +32,11 @@ export default {
     ReEmitStop() {
       this.$emit("stop");
     },
+  },
+  data(){
+    return{
+      TimerState: false
+    }
   }
 }
 </script>
