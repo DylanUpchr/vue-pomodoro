@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img :src="this.Img.url" >
+      <img class="auto-resize" :src="this.Img.url" >
   </div>
 </template>
 
@@ -32,5 +32,9 @@ export default {
 </script>
 
 <style>
-
+.auto-resize{
+    width: auto;
+    height: 100%;
+    max-height: 50vh;
+}
 </style>

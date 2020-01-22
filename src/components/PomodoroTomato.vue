@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img alt="Tomato" src="../assets/tomato.jpg">
+    <img class="tomato" alt="Tomato" src="../assets/tomato.jpg">
   </div>
 </template>
 
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style>
-
+.tomato{
+  width: auto;
+  height: 45vh;
+}
 </style>
