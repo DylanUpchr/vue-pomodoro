@@ -12,9 +12,10 @@ export default {
       return {
         WorkingState: false,
         Active: this.timerState,
-        Time: 1200,
         Minutes: 0,
-        Seconds: -1
+        Seconds: -1,
+        StartMinutes: 0,
+        StartSeconds: 20
       }
     },
     methods: {
@@ -28,7 +29,8 @@ export default {
           this.Active = false
       },
       'work': function() {
-              this.Seconds = 20
+              this.Seconds = this.StartSeconds
+              this.Minutes = this.StartMinutes
         this.WorkingState = true
       },
       'rest': function(){
