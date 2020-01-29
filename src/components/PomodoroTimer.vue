@@ -1,6 +1,7 @@
 <template>
   <div>
       <label ref="clock"></label><br/>
+      <!-- Change the label state -->
       <label>{{ this.WorkingState ? "WORK!" : "REST!" }}</label>
   </div>
 </template>
@@ -25,20 +26,24 @@ export default {
       }
     },
     methods: {
+      // Play the timer
       'play': function(){
           this.Active = true
           if(this.Seconds == -1){
             this.work()
           }
       },
+      // Pause the timer
       'pause': function(){
           this.Active = false
       },
+      // Set the work timer
       'work': function() {
         this.Minutes = this.WorkMinutes
         this.Seconds = this.WorkSeconds
         this.WorkingState = true
       },
+      // Set the rest timer and each 4 pomodori cycle change the rest
       'rest': function(){
         if(this.RestCount != this.PomodoriCycle) {
           this.RestCount++
@@ -51,11 +56,13 @@ export default {
         }
         this.WorkingState = false
       },
+      // Reset the timer
       'reset': function(){
         this.Minutes = this.ResetMinutes
         this.Seconds = this.ResetSeconds
         this.$emit('reset')
       },
+      // Decrease the pomodori and change the state
       'WorkTick': function(){
         if(this.Active && this.WorkingState){
           if(this.Seconds == 0 && this.Seconds != null){
@@ -71,11 +78,13 @@ export default {
               this.work()
             }
           }
+          // Display the timer
           this.$refs.clock.innerHTML = this.Minutes + ":" + (this.Seconds > 9 ? this.Seconds : "0" + this.Seconds)
         }
       },
+      // Emit event to change the cat each 5 seconds
       'RestTick': function(){
-        if (!this.WorkingState) {
+        if (!this.WorkingState && this.Active) {
           this.$emit('apiChange')
         }
       }
@@ -83,6 +92,7 @@ export default {
     props: {
       timerState: Boolean,
     },
+    // Get the parent event and start the timer
     created(){
       this.$parent.$on('play', this.play)
       this.$parent.$on('pause', this.pause)
