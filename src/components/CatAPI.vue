@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img class="auto-resize" :src="this.Img.url" >
+      <img class="auto-resize" :src="(( this.Img == null ? '' : this.Img.url ))" >
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
             })
         },
         'changeImg': function(){
+            //Store result from fetchImg in Img
             this.fetchImg().then((response) => {
             this.Img = response
         })
@@ -29,9 +30,11 @@ export default {
         }
     },
     created(){
+        //Change image when parent emits apiChange, originating in PomodoroTimer
         this.$parent.$on("apiChange", this.changeImg)
     },
     mounted(){
+        //Change image on mount
         this.changeImg()
     }
         

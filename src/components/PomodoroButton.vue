@@ -1,5 +1,6 @@
 <template>
   <div>
+      <!--Pomodoro controls-->
     <button ref="playButton" v-on:click="IsClicked('playButton')"><font-awesome-icon icon="play"/></button>
     <button ref="pauseButton"  v-on:click="IsClicked('pauseButton')"><font-awesome-icon icon="pause"/></button>
     <button ref="stopButton"  v-on:click="IsClicked('stopButton')"><font-awesome-icon icon="stop"/></button>
@@ -10,6 +11,7 @@
 export default {
     name: 'PomodoroButton',
     methods: {
+        //Change button states according to which one was clicked and emit the proper event
         IsClicked(item) {
             switch(item) {
                 default:
@@ -33,6 +35,7 @@ export default {
                     break;
             }
         },
+        //Reset buttons reset event is emitted from PomodoroTimer
         Reset() {
             this.$refs["playButton"].disabled = true;
             this.$refs["pauseButton"].disabled = false;

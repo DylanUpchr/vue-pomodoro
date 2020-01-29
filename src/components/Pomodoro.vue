@@ -23,18 +23,23 @@ export default {
     PomodoroTimer,
   },
   methods: {
+    //Re emit play event, originating in PomodoroButton
     ReEmitPlay() {
       this.$emit("play");
     },
+    //Re emit pause event, originating in PomodoroButton
     ReEmitPause() {
       this.$emit("pause");
     },
+    //Re emit stop event, originating in PomodoroButton
     ReEmitStop() {
       this.$emit("stop");
     },
+    //Emit reset event
     Reset(){
       this.$emit("reset");
     },
+    //Re emit play event, originating in PomodoroTimer
     ReEmitApiChange(){
       this.$emit('apiChange');
     }
