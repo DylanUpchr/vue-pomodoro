@@ -16,6 +16,7 @@ export default {
     CatAPI
   },
   methods:{
+    // ReEmit the event to change the cat with the api
     'ReEmitApiChange': function(){
       this.$emit('apiChange');
     }
