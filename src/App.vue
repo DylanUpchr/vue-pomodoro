@@ -15,8 +15,10 @@ export default {
     Pomodoro,
     CatAPI
   },
-  'ReEmitApiChange': function(){
-    this.$emit('apiChange');
+  methods:{
+    'ReEmitApiChange': function(){
+      this.$emit('apiChange');
+    }
   }
 }
 </script>

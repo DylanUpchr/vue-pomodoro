@@ -16,6 +16,11 @@ export default {
             return axios.get(apiUrl).then(function(response){
                 return response.data[0]
             })
+        },
+        'changeImg': function(){
+            this.fetchImg().then((response) => {
+            this.Img = response
+        })
         }
     },
     data: function(){
@@ -24,14 +29,12 @@ export default {
         }
     },
     created(){
-        this.$parent.$on("apiChange", this.fetchImg)
+        this.$parent.$on("apiChange", this.changeImg)
     },
     mounted(){
-        //Call fetchImg and store returned object into Img
-        this.fetchImg().then((response) => {
-            this.Img = response
-        })
+        this.changeImg()
     }
+        
 }
 </script>
 

@@ -56,8 +56,8 @@ export default {
         this.Seconds = this.ResetSeconds
         this.$emit('reset')
       },
-      'tick': function(){
-        if(this.Active){
+      'WorkTick': function(){
+        if(this.Active && this.WorkingState){
           if(this.Seconds == 0 && this.Seconds != null){
             this.Minutes--
             this.Seconds = 59
@@ -73,6 +73,11 @@ export default {
           }
           this.$refs.clock.innerHTML = this.Minutes + ":" + (this.Seconds > 9 ? this.Seconds : "0" + this.Seconds)
         }
+      },
+      'RestTick': function(){
+        if (!this.WorkingState) {
+          this.$emit('apiChange')
+        }
       }
     },
     props: {
@@ -82,7 +87,8 @@ export default {
       this.$parent.$on('play', this.play)
       this.$parent.$on('pause', this.pause)
       this.$parent.$on('stop', this.reset)
-      this.timer = setInterval(this.tick, 1000)
+      this.WorkTimer = setInterval(this.WorkTick, 1000)
+      this.RestTimer = setInterval(this.RestTick, 5000)
     }
 }
 </script>
