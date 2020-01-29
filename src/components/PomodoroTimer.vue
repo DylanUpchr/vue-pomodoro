@@ -34,12 +34,13 @@ export default {
         this.WorkingState = true
       },
       'rest': function(){
-              this.Seconds = 10
+        this.Minutes = 5
+        this.Seconds = 0
         this.WorkingState = false
       },
       'reset': function(){
-        this.Minutes = 0
-        this.Seconds = 25
+        this.Minutes = 25
+        this.Seconds = 0
         this.$emit('reset')
       },
       'tick': function(){
