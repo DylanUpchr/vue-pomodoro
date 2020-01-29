@@ -28,16 +28,18 @@ export default {
           this.Active = false
       },
       'work': function() {
-              this.Seconds = 20
+        this.Minutes = 25
+        this.Seconds = 0
         this.WorkingState = true
       },
       'rest': function(){
-              this.Seconds = 10
+        this.Minutes = 5
+        this.Seconds = 0
         this.WorkingState = false
       },
       'reset': function(){
-        this.Minutes = 0
-        this.Seconds = 25
+        this.Minutes = 25
+        this.Seconds = 0
         this.$emit('reset')
       },
       'tick': function(){
