@@ -12,10 +12,16 @@ export default {
       return {
         WorkingState: false,
         Active: this.timerState,
+        PomodoriCycle: 4,
+        RestCount: 0,
         Minutes: 0,
         Seconds: -1,
-        StartMinutes: 0,
-        StartSeconds: 20
+        WorkMinutes: 25,
+        WorkSeconds: 0,
+        RestMinutes: 5,
+        RestSeconds: 0,
+        ResetMinutes: 25,
+        ResetSeconds: 0
       }
     },
     methods: {
@@ -29,25 +35,32 @@ export default {
           this.Active = false
       },
       'work': function() {
-              this.Seconds = this.StartSeconds
-              this.Minutes = this.StartMinutes
+        this.Minutes = this.WorkMinutes
+        this.Seconds = this.WorkSeconds
         this.WorkingState = true
       },
       'rest': function(){
-        this.Minutes = 5
-        this.Seconds = 0
+        if(this.RestCount != this.PomodoriCycle) {
+          this.RestCount++
+          this.Minutes = this.RestMinutes
+          this.Seconds = this.RestSeconds
+        } else {
+          this.RestCount = 0
+          this.Minutes = this.RestMinutes * 3
+          this.Seconds = this.RestSeconds
+        }
         this.WorkingState = false
       },
       'reset': function(){
-        this.Minutes = 25
-        this.Seconds = 0
+        this.Minutes = this.ResetMinutes
+        this.Seconds = this.ResetSeconds
         this.$emit('reset')
       },
       'tick': function(){
         if(this.Active){
           if(this.Seconds == 0 && this.Seconds != null){
             this.Minutes--
-            this.Seconds = 60
+            this.Seconds = 59
           }else{
             this.Seconds--
           }
