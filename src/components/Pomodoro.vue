@@ -3,7 +3,7 @@
     <PomodoroTitle></PomodoroTitle>
     <PomodoroTomato></PomodoroTomato>
     <PomodoroButton v-on:play="ReEmitPlay" v-on:pause="ReEmitPause" v-on:stop="ReEmitStop"></PomodoroButton>
-    <PomodoroTimer v-on:reset="Reset" :timerState="this.TimerState"></PomodoroTimer>
+    <PomodoroTimer v-on:apiChange="ReEmitApiChange" v-on:reset="Reset" :timerState="this.TimerState"></PomodoroTimer>
   </div>
   
 </template>
@@ -34,6 +34,9 @@ export default {
     },
     Reset(){
       this.$emit("reset");
+    },
+    ReEmitApiChange(){
+      this.$emit('apiChange');
     }
   },
   data(){

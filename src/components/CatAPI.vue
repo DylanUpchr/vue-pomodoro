@@ -23,6 +23,9 @@ export default {
             Img: null
         }
     },
+    created(){
+        this.$parent.$on("apiChange", this.fetchImg)
+    },
     mounted(){
         //Call fetchImg and store returned object into Img
         this.fetchImg().then((response) => {

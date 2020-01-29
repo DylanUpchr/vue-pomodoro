@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <pomodoro class="component"></pomodoro>
+    <pomodoro v-on:apiChange="ReEmitApiChange" class="component"></pomodoro>
     <cat-a-p-i class="component"></cat-a-p-i>
   </div>
 </template>
@@ -14,6 +14,9 @@ export default {
   components: {
     Pomodoro,
     CatAPI
+  },
+  'ReEmitApiChange': function(){
+    this.$emit('apiChange');
   }
 }
 </script>
