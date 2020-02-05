@@ -23,14 +23,18 @@ export default {
         cv.COLOR_RGBA2BGR565
       ]
 
+        cv.cvtColor(src, dst, colorSpaces[Math.floor(Math.random() * 3)])
+        let M = cv.getRotationMatrix2D(center, Math.floor(Math.random() * 180), 1);
+        cv.warpAffine(dst, dst, M, dsize, cv.INTER_LINEAR, cv.BORDER_CONSTANT, new cv.Scalar());
+        cv.imshow('canvas', dst)
+
       setInterval(function(){
-        // You can try more different parameters
         cv.cvtColor(src, dst, colorSpaces[Math.floor(Math.random() * 3)])
         let M = cv.getRotationMatrix2D(center, Math.floor(Math.random() * 180), 1);
         cv.warpAffine(dst, dst, M, dsize, cv.INTER_LINEAR, cv.BORDER_CONSTANT, new cv.Scalar());
         cv.imshow('canvas', dst)
       },
-      300000)
+      30000)
       }
     }
 }
