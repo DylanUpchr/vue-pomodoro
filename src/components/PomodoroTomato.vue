@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img hidden id="img" class="tomato" alt="Tomato" src="../assets/tomato.jpg">
+    <img id="img" class="tomato" alt="Tomato" src="../assets/tomato.jpg">
     <canvas id="canvas" width="400" height="400"></canvas>
   </div>
 </template>
