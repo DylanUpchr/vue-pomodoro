@@ -20,7 +20,7 @@ export default {
         let colorSpaces = [
           cv.COLOR_RGB2BGRA,
           cv.COLOR_RGBA2GRAY,
-          cv.COLOR_RGBA2BGR565
+          cv.COLOR_RGB2RGBA
         ]
 
         cv.cvtColor(src, dst, colorSpaces[Math.floor(Math.random() * 3)])
